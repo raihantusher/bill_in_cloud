@@ -1,0 +1,45 @@
+{% extends "adminlte/adminlte.html" %}
+
+{% block content %}
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6 col-sm-10 d-flex flex-column align-items-center"
+         style="border: 2px solid #ced4da; border-radius: 20px;">
+      <h3 class="text-center text-uppercase">
+        {% if txt %}
+          {{txt}}
+        {% else %}
+          Add Expense
+        {% endif %}
+      </h3>
+      <div class="col-lg-8 p-lg-4 text-center">
+        {% if messages %}
+          {% for message in messages %}
+            <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5 alert-dismissible fade show" {% endif %}>
+              {{message}}
+            </p>
+          {% endfor %}
+        {% endif %}
+        <form action="" method="post" class="w-100">
+          {% csrf_token %}
+          {% for fm in form %}
+            {{fm.label_tag}} {{fm}} <small class="text-warning">{{fm.errors | striptags}}</small>
+          {% endfor %}
+          <br>
+          <div class="button pl-1 p-1 text-center">
+            <input type="submit" value="Submit" class="btn px-4 btn-center btn-primary">
+          </div>
+          {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+              <p class="alert alert-danger my-3">{{ error}}</p>
+            {% endfor %}
+          {% endif %}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+{% endblock %}

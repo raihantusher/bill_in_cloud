@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'adminlite',
     'mainapp',
+    'expense',
 ]
 
 MIDDLEWARE = [
@@ -95,6 +96,18 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'backup_king',
+#         'USER': 'raihan',
+#         'PASSWORD': 'raihan@321',
+#         'HOST': '10.0.0.112',
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
