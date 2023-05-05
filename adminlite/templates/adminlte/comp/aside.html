@@ -83,7 +83,7 @@
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
             <p>
-              Transactions
+              Expenses
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
@@ -95,18 +95,18 @@
                 <p>Expense Categories</p>
               </a>
             </li>
-            
+            <li class="nav-item">
+              <a href="{% url 'add_expense' %}"
+                class="nav-link {% if 'expense/add/' in request.path %}active{% endif %}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add Expense</p>
+              </a>
+            </li>
             <li class="nav-item">
               <a href="{% url 'expense_list' %}"
                 class="nav-link {% if 'expense/expense_list/' in request.path %}active{% endif %}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Expenses</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="" class="nav-link {% if 'expense/income/' in request.path %}active{% endif %}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Income</p>
+                <p>Expense List</p>
               </a>
             </li>
           </ul>
