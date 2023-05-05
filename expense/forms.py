@@ -1,14 +1,24 @@
 from django import forms
-from .models import ExpensesList
+from .models import Transaction
 
 
-class ExpenseForm(forms.ModelForm):
+class TransactionDebitForm(forms.ModelForm):
     class Meta:
-        model = ExpensesList
-        fields = ['expense_category', 'amount_of_money', 'entry_date', 'description']
+        model = Transaction
+        fields = ['title', 'cat', 'dr']
         widgets = {
-            'expense_category': forms.TextInput(attrs={'class': 'form-control'}),
-            'amount_of_money': forms.NumberInput(attrs={'class': 'form-control'}),
-            'entry_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'cat': forms.NumberInput(attrs={'class': 'form-control'}),
+            'date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'dr': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+class TransactionCreditForm(forms.ModelForm):
+    class Meta:
+        model = Transaction
+        fields = ['title', 'cat', 'cr']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'cat': forms.NumberInput(attrs={'class': 'form-control'}),
+            'date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'dr': forms.Textarea(attrs={'class': 'form-control'}),
         }

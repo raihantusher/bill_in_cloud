@@ -10,15 +10,21 @@ class Account(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=35)
+    def __str__(self):
+        return self.name
 
 
 class Transaction(models.Model):
     title = models.CharField(max_length=200)
-    cat = models.ForeignKey(Category, on_delete=models.SET_NULL)
-    cat = models.ForeignKey(Account, on_delete=models.CASCADE)
+    cat = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    #cat = models.ForeignKey(Account, on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
     dr = models.FloatField(default=0)
     cr = models.FloatField(default=0)
+    
+    def __str__(self):
+        return f"{self.title} ({self.date.strftime('%Y-%m-%d')})"
+
 
 #model for expenses list
 class ExpensesList(models.Model):

@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.core.paginator import Paginator
 from .models import ExpensesList
 from django.http import HttpResponseRedirect
-from .forms import ExpenseForm
+from .forms import TransactionDebitForm
 from django.contrib import messages
 # Create your views here.
 
@@ -23,7 +23,7 @@ def expense_list(request):
 
 #Add Expense
 def add_expense(request):
-    expense_form = ExpenseForm
+    expense_form = TransactionDebitForm
     if request.method == "POST":
         expense_form = expense_form(data=request.POST)
         expense_form.save()
