@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'adminlite',
     'mainapp',
     'expense',
+    'hr_payroll',
 ]
 
 MIDDLEWARE = [
