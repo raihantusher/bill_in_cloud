@@ -1,14 +1,23 @@
 from django import forms
-from .models import ExpensesList
+from .models import Transaction,Category
 
 
-class ExpenseForm(forms.ModelForm):
+class TransactionDebitForm(forms.ModelForm):
+    cat = forms.ModelChoiceField(queryset=Category.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}),label=' Category')
+    dr = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter Debit amount(00.00)'}),label=' Amount')
     class Meta:
-        model = ExpensesList
-        fields = ['expense_category', 'amount_of_money', 'entry_date', 'description']
+        model = Transaction
+        fields = ['title', 'cat', 'dr']
         widgets = {
-            'expense_category': forms.TextInput(attrs={'class': 'form-control'}),
-            'amount_of_money': forms.NumberInput(attrs={'class': 'form-control'}),
-            'entry_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'title': forms.TextInput(attrs={'class': 'form-control','placeholder':'Expense Title'})
+        }
+class TransactionCreditForm(forms.ModelForm):
+    cat = forms.ModelChoiceField(queryset=Category.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}),label='Category')
+    cr = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter Debit amount(00.00)'}),label='Amount')
+    
+    class Meta:
+        model = Transaction
+        fields = ['title', 'cat', 'cr']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
         }

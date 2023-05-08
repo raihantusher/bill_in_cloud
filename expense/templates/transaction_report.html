@@ -1,0 +1,76 @@
+{% extends "adminlte/adminlte.html" %}
+{% load static%}
+{% block content %}
+<div class="container mt-5">
+    <!--Filter year or month goes on top of this-->
+    <h1 class="text-md-center text-sm-center mb-5">Transaction Report</h1>
+    <div class="row gap-5">
+        <div class="col-lg-4 col-md-6">
+            <!-- Table to show income, expense, profit -->
+            <h4>Income and Expense Summary</h4>
+            <table class="table table-bordered mt-3 table-striped">
+                <thead>
+                    <tr>
+                        <th>Revenue Report</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Income</td>
+                        <td>{{ total_income }}</td>
+                    </tr>
+                    <tr>
+                        <td>Expense</td>
+                        <td>{{ total_expense }}</td>
+                    </tr>
+                    <tr>
+                        <td>Profit</td>
+                        <td>{{ total_profit }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <!-- Table to show income by category -->
+            <h4>Income by Category</h4>
+            <table class="table table-bordered mt-3 table-striped">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in income_by_category %}
+                    <tr>
+                        <td>{{ item.cat__name }}</td>
+                        <td>{{ item.cr__sum }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4 col-md-6 ">
+            <!-- Table to show expense by category -->
+            <h4>Expense by Category </h4>
+            <table class="table table-bordered mt-3 table-striped">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in expense_by_category %}
+                    <tr>
+                        <td>{{ item.cat__name }}</td>
+                        <td>{{ item.dr__sum }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
