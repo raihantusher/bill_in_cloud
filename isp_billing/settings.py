@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'mainapp',
     'expense',
     'hr_payroll',
+    #'accounting'
 ]
 
 MIDDLEWARE = [
