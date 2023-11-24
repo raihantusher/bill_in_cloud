@@ -1,0 +1,196 @@
+{% extends "adminlte/adminlte.html" %}
+
+{% block css %}
+{{ block.super }}
+<style>
+    .purple {
+        color: #7953f5;
+    }
+    .bg-purple {
+        background-color: #7953f5;
+    }
+
+
+
+    .blue {
+       color: #0064ff;
+    }
+    .bg-blue {
+        background-color: #0064ff;
+    }
+
+
+    .green {
+        color: #00d478;
+    }
+    .bg-green {
+        background-color: #00d478;
+    }
+
+    .red {
+        color: #ff194a;
+    }
+
+    .bg-red {
+        background-color: #ff194a;
+    }
+
+
+
+
+
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+{% include 'adminlte/comp/content_header.html' with Header="Reports" %}
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title text-bold">Financial statements</h3>
+
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+                        <div class="text-sm">
+                            <h6 class="fs-6 text-bold purple">Income Statement</h6>
+                            <p>Profit or loss, based on what you made and what you spent.</p>
+                        </div>
+                        <div class="d-flex flex-column text-right">
+                            <a class="btn btn-sm btn-primary bg-purple border-0">Go</a>
+                        </div>
+                    </div>
+                    <!-- /.d-flex -->
+                    <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+                        <div class="text-sm">
+                            <h6 class="fs-6 text-bold purple">Balance sheet</h6>
+                            <p>Total assets and liabilities, compared to your company’s value.</p>
+                        </div>
+                        <div class="d-flex flex-column text-right">
+                            <a class="btn btn-sm btn-primary bg-purple border-0">Go</a>
+                        </div>
+                    </div>
+                    <!-- /.d-flex -->
+                    <div class="d-flex justify-content-between align-items-center mb-0">
+                        <div class="text-sm">
+                            <h6 class="fs-6 text-bold purple">Cashflow Statement</h6>
+                            <p>Changes in cash from operating, investing, and financing activities.</p>
+                        </div>
+                        <div class="d-flex flex-column text-right">
+                            <a class="btn btn-sm btn-primary bg-purple border-0">Go</a>
+                        </div>
+                    </div>
+                    <!-- /.d-flex -->
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title text-bold">Sales</h3>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+                        <div class="text-sm">
+                            <h6 class="fs-6 text-bold green">Accounts receivable</h6>
+                            <p>The amounts customers owe you, and how many days overdue they are..</p>
+                        </div>
+                        <div class="d-flex flex-column text-right">
+                            <a class="btn btn-sm bg-green border-0">Go</a>
+                        </div>
+                    </div>
+                    <!-- /.d-flex -->
+                    <div class="d-flex justify-content-between align-items-center mb-0">
+                        <div class="text-sm">
+                            <h6 class="fs-6 text-bold green">Sales summary</h6>
+                            <p>All your sales details including invoices or deposits.</p>
+                        </div>
+                        <div class="d-flex flex-column text-right">
+                            <a class="btn btn-sm bg-green border-0">Go</a>
+                        </div>
+                    </div>
+                    <!-- /.d-flex -->
+
+                </div>
+            </div>
+        </div>
+        <!-- /.col-md-6 -->
+        <div class="col-lg-6">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title text-bold">Accounting & Tax</h3>
+
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+                        <div class="text-sm">
+                            <h6 class="fs-6 text-bold blue">General ledger</h6>
+                            <p>A running balance of every transaction you’ve made in every category.</p>
+                        </div>
+                        <div class="d-flex flex-column text-right">
+                            <a class="btn btn-sm  bg-blue border-0">Go</a>
+                        </div>
+                    </div>
+                    <!-- /.d-flex -->
+                    <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+                        <div class="text-sm">
+                            <h6 class="fs-6 text-bold blue">General journal</h6>
+                            <p>All your transactions described as journal entries.</p>
+                        </div>
+                        <div class="d-flex flex-column text-right">
+                            <a class="btn btn-sm  bg-blue border-0">Go</a>
+                        </div>
+                    </div>
+                    <!-- /.d-flex -->
+                    <div class="d-flex justify-content-between align-items-center mb-0">
+                        <div class="text-sm">
+                            <h6 class="fs-6 text-bold blue">Trial balance</h6>
+                            <p>The debit or credit balance for each category or account.</p>
+                        </div>
+                        <div class="d-flex flex-column text-right">
+                            <a class="btn btn-sm  bg-blue border-0">Go</a>
+                        </div>
+                    </div>
+                    <!-- /.d-flex -->
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title text-bold">Expenses</h3>
+
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+                        <div class="text-sm">
+                            <h6 class="fs-6 text-bold red">Expense summary</h6>
+                            <p>All of your expenses, grouped by customer, category, or vendor.</p>
+                        </div>
+                        <div class="d-flex flex-column text-right">
+                            <a class="btn btn-sm bg-red border-0">Go</a>
+                        </div>
+                    </div>
+                    <!-- /.d-flex -->
+                    <div class="d-flex justify-content-between align-items-center mb-0">
+                        <div class="text-sm">
+                            <h6 class="fs-6 text-bold red">Billable expenses</h6>
+                            <p>Details about billable or pass-through expenses you’ve incurred.</p>
+                        </div>
+                        <div class="d-flex flex-column text-right">
+                            <a class="btn btn-sm bg-red border-0">Go</a>
+                        </div>
+                    </div>
+                    <!-- /.d-flex -->
+                </div>
+            </div>
+        </div>
+        <!-- /.col-md-6 -->
+
+    </div>
+</div>
+{% endblock %}

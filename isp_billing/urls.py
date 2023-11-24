@@ -23,4 +23,5 @@ urlpatterns = [
     path('main/', include('mainapp.urls')),
     #path('admin/', include('')),
 
+    path('accs/', include('bookkeeper.urls')),
 ]

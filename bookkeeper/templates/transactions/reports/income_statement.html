@@ -1,0 +1,57 @@
+{% extends "adminlte/adminlte.html" %}
+
+{% block css %}
+{{ block.super }}
+<style>
+    .purple {
+        color: #7953f5;
+    }
+    .bg-purple {
+        background-color: #7953f5;
+    }
+
+
+
+    .blue {
+       color: #0064ff;
+    }
+    .bg-blue {
+        background-color: #0064ff;
+    }
+
+
+    .green {
+        color: #00d478;
+    }
+    .bg-green {
+        background-color: #00d478;
+    }
+
+    .red {
+        color: #ff194a;
+    }
+
+    .bg-red {
+        background-color: #ff194a;
+    }
+
+
+
+
+
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+{% include 'adminlte/comp/content_header.html' with Header="Income Statement" %}
+
+<div class="container">
+    <div class="row">
+
+
+    </div>
+</div>
+{% endblock %}
