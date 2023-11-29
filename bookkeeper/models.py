@@ -61,7 +61,7 @@ class TransactionManager(models.Manager):
 
 
 class Transaction(models.Model):
-    AYPES = (
+    TYPES = (
         ('credit', 'Credit'),  # inc = debit dec = credit
         ('debit', 'Debit'),  # dec = debit inc = credit
     )
