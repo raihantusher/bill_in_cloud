@@ -112,8 +112,8 @@
           </ul>
         </li>
 
-        <li class="nav-item {% if 'package' in request.path %}menu-open{% endif %}">
-          <a href="#" class="nav-link">
+        <li class="nav-item {% if 'reports' in request.path %}menu-open{% endif %}">
+          <a href="{% url 'reports' %}" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
             <p>
               Reports
@@ -122,10 +122,10 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{% url 'add_expense' %}"
-                class="nav-link {% if 'expense/add/' in request.path %}active{% endif %}">
+              <a href="{% url 'reports' %}"
+                class="nav-link {% if 'acc/reports/' in request.path %}active{% endif %}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Expense Categories</p>
+                <p>All Reports</p>
               </a>
             </li>
 
