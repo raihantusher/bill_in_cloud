@@ -46,7 +46,7 @@ class Transaction(models.Model):
         ('debit', 'Debit'),  # dec = debit inc = credit
     )
     journal = models.ForeignKey(Journal, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name="transactions", on_delete=models.CASCADE)
     amount = models.DecimalField(default=0, max_digits=10, decimal_places=2)
     description = models.TextField()
     date = models.DateField(auto_now_add=True)
