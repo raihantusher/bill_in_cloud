@@ -13,7 +13,7 @@ class IncomeStatement(View):
 
     def get(self, request, *args, **kwargs):
 
-        expense_categories = Category.objects.filter(name="Expense").first()
+        expense_categories = Category.objects.filter(name="Expenses").exclude(name="Cost of Goods Sold").first()
         income_categories = Category.objects.filter(name="Expense").first()
 
         cash = Transaction.objects.filter(category__name="Cash").first()
@@ -32,6 +32,8 @@ class IncomeStatement(View):
 
             'cost_of_goods_sold': cost_of_good_sold,
             'gross_profit': gross_profit,
+
+            'expenses': expense_categories,
 
         }
         return render(request, 'transactions/reports/income_statement.html', context)
