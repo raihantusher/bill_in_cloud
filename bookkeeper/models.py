@@ -52,8 +52,6 @@ class Transaction(models.Model):
     date = models.DateField(auto_now_add=True)
     type = models.CharField(max_length=120, choices=TYPES, default="credit")
 
-    objects = models.Manager()
-    transaction_obj = TransactiondManager()
     def balance(self):
         credit = Transaction.objects.filter(category=self.category, type="credit").aggregate(models.Sum('amount'))['amount__sum'] or 0
         debit = Transaction.objects.filter(category=self.category, type="debit").aggregate(models.Sum('amount'))[
