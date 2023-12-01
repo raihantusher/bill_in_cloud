@@ -12,10 +12,15 @@ class AllReportsView(TemplateView):
 class IncomeStatement(View):
 
     def get(self, request, *args, **kwargs):
-        cash = Transaction.objects.calculate_net_balance(category="Cash")
-        sales = Transaction.objects.calculate_net_balance(category="Sales")
+        cash = Transaction.objects.filter(category__name="Cash").first()
+        cash = cash.balance()
+        print(cash)
+        sales = Transaction.objects.filter(category__name="Sales").first()
+        sales = sales.balance()
 
-        cost_of_good_sold = Transaction.objects.calculate_net_balance(category="Cost of Goods Sold")
+        cost_of_good_sold =  Transaction.objects.filter(category__name="Cost of Goods Sold").first()
+        cost_of_good_sold = cost_of_good_sold.balance()
+
         gross_profit = sales - cost_of_good_sold
 
         context = {
