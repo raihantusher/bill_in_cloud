@@ -41,6 +41,10 @@
 
 
 
+
+
+
+
 </style>
 
 {% endblock %}
@@ -50,79 +54,26 @@
 
 {% include 'adminlte/comp/content_header.html' with Header="Income Statement" %}
 
-<div class="container">
-   <div class="row mt-4">
-        <div class="col-md-6">
-            <h4>Revenue</h4>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Description</th>
-                    <th scope="col">Amount ($)</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Sales</td>
-                    <td>{{ sales_income }}</td>
-                </tr>
-                <tr>
-                    <td>Other Income</td>
-                    <td>5,000</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+<div class="container-fluid">
 
-        <div class="col-md-6">
-            <h4>Expenses</h4>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Description</th>
-                    <th scope="col">Amount ($)</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Cost of Goods Sold</td>
-                    <td>{{ cost_of_goods_sold }}</td>
-                </tr>
-                <tr>
-                    <td>Operating Expenses</td>
-                    <td>20,000</td>
-                </tr>
-                <tr>
-                    <td>Interest Expense</td>
-                    <td>2,000</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+
+        <div class="card col-md-8">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                    Sales
+                    <span class="badge bg-primary"> {{ sales_income }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center border-bottom">
+                    Cost Of Goods Sold
+                    <span class="">{{ cost_of_goods_sold }}</span>
+                </li>
+                <!-- Add more list items as needed -->
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                    Gross Profit
+                    <span class="">{{ gross_profit }}</span>
+                </li>
+            </ul>
     </div>
 
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <h4>Total Revenue</h4>
-            <p class="lead">$105,000</p>
-        </div>
-
-        <div class="col-md-6">
-            <h4>Total Expenses</h4>
-            <p class="lead">$62,000</p>
-        </div>
-    </div>
-
-    <div class="row mt-4">
-         <div class="col-md-6">
-            <h4>Gross Profit </h4>
-            <p class="lead">$ {{ gross_profit }}</p>
-        </div>
-
-        <div class="col-md-6">
-            <h4>Net Income</h4>
-            <p class="lead">$43,000</p>
-        </div>
-    </div>
 </div>
-    {% endblock %}
+{% endblock %}
