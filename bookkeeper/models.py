@@ -37,27 +37,7 @@ class Journal(models.Model):
         return self.name
 
 
-# Create your models here.
-class TransactionManager(models.Manager):
-    def calculate_net_balance(self, category, start_date=first_day_of_year, end_date=last_day_of_year):
-        obj = self.filter(category__name=category).first()
-        print(obj)
-        total_debit = self.filter(category__name=category, date__range=(start_date, end_date)).aggregate(
-            total_debit=models.Sum('debit'))[
-                          'total_debit'] or 0
-        total_credit = self.filter(category__name=category, date__range=(start_date, end_date)).aggregate(
-            total_credit=models.Sum('credit'))[
-                           'total_credit'] or 0
-        # print(obj.category.account_type)
-        try:
-            if obj.category.account_type == "asset_expense":
-                print(total_debit)
-                return total_debit - total_credit
-            else:
-                print(total_debit)
-                return total_credit - total_debit
-        except:
-            return 0
+
 
 
 class Transaction(models.Model):
@@ -71,7 +51,22 @@ class Transaction(models.Model):
     description = models.TextField()
     date = models.DateField(auto_now_add=True)
     type = models.CharField(max_length=120, choices=TYPES, default="credit")
-    objects = TransactionManager()
 
+    objects = models.Manager()
+    transaction_obj = TransactiondManager()
+    def balance(self):
+        credit = Transaction.objects.filter(category=self.category, type="credit").aggregate(models.Sum('amount'))['amount__sum'] or 0
+        debit = Transaction.objects.filter(category=self.category, type="debit").aggregate(models.Sum('amount'))[
+                     'amount__sum'] or 0
+        try:
+            if self.category.account_type == "asset_expense":
+                #print(total_debit)
+                return debit - credit
+            else:
+                #print(total_debit)
+                return credit - debit
+        except:
+            return 0
     def __str__(self):
-        return f"Account: {self.category} -- {self.journal} -Debit: {self.debit} - Credit {self.credit} - {self.date}"
+        # print(self.balance())
+        return f"Account: {self.category} --  - {self.date}"
