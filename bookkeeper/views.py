@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views import View
 
-from .models import Transaction
+from .models import Transaction, Category
 
 
 class AllReportsView(TemplateView):
@@ -12,6 +12,10 @@ class AllReportsView(TemplateView):
 class IncomeStatement(View):
 
     def get(self, request, *args, **kwargs):
+
+        expense_categories = Category.objects.filter(name="Expense").first()
+        income_categories = Category.objects.filter(name="Expense").first()
+
         cash = Transaction.objects.filter(category__name="Cash").first()
         cash = cash.balance()
         print(cash)
