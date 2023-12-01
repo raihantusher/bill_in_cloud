@@ -65,6 +65,9 @@ class Transaction(models.Model):
                 return credit - debit
         except:
             return 0
+
+        return 0
+
     def __str__(self):
         # print(self.balance())
         return f"Account: {self.category} --  - {self.date}"
