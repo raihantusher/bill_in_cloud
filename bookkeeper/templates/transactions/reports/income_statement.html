@@ -45,6 +45,7 @@
 
 
 
+
 </style>
 
 {% endblock %}
@@ -57,22 +58,64 @@
 <div class="container-fluid">
 
 
-        <div class="card col-md-8">
-            <ul class="list-group">
+    <div class="card col-md-8">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                Sales
+                <span class="badge bg-primary"> {{ sales_income }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center border-bottom">
+                Cost Of Goods Sold
+                <span class="">{{ cost_of_goods_sold }}</span>
+            </li>
+            <!-- Add more list items as needed -->
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                Gross Profit
+                <span class="">{{ gross_profit }}</span>
+            </li>
+        </ul>
+        <ul class="list-group">
+           <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                Expense
+                <span class="">0</span>
+            </li>
+            <ul>
+                {% for expense in expenses.children.all %}
                 <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                    Sales
-                    <span class="badge bg-primary"> {{ sales_income }}</span>
+                    {{ expense.name }}
+                    <span class="">{% if  expense.transaction.first.balance == None %} 0 {% else %} {{ expense.transactions.first.balance }} {% endif %}</span>
                 </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center border-bottom">
-                    Cost Of Goods Sold
-                    <span class="">{{ cost_of_goods_sold }}</span>
-                </li>
-                <!-- Add more list items as needed -->
-                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                    Gross Profit
-                    <span class="">{{ gross_profit }}</span>
-                </li>
+                {% endfor %}
             </ul>
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                Operating Income
+                <span class="">{{ gross_profit }}</span>
+            </li>
+        </ul>
+        <ul class="list-group">
+           <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                Other revenue
+                <span class="">0</span>
+            </li>
+            <ul>
+                {% for expense in expenses.children.all %}
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                    {{ expense.name }}
+                    <span class="">{% if  expense.transaction.first.balance == None %} 0 {% else %} {{ expense.transactions.first.balance }} {% endif %}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                Other Revenue Total
+                <span class="">{{ gross_profit }}</span>
+            </li>
+        </ul>
+        <div class="ul">
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                Net Income
+                <span class="">0</span>
+            </li>
+        </div>
     </div>
 
 </div>
